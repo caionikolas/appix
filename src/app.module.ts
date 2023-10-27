@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { AppService } from './app.service';
-import { VendedorModule } from './vendedor/vendedor.module';
+import { VendedorModule } from './app/entidades/vendedor/vendedor.module';
 
 @Module({
   imports: [VendedorModule],

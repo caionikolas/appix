@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
-import { PrismaService } from 'src/prisma.service';
 import { randomUUID } from 'node:crypto';
 import { CriarVendedor } from './criar-vendedor-body';
+import { PrismaService } from 'src/infra/prisma.service';
 
 @Controller('vendedor')
 export class VendedorController {
