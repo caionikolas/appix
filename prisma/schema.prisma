@@ -1,0 +1,57 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Vendedor {
+  id        String    @id
+  nome      String
+  descricao String
+  delivery  Boolean
+  retirada  Boolean
+  updateAt  DateTime?
+  createdAt DateTime  @default(now())
+  produtos  Produto[]
+}
+
+model Produto {
+  id         String    @id
+  nome       String
+  observacao String
+  preco      Float
+  updateAt   DateTime?
+  createdAt  DateTime  @default(now())
+  Vendedor   Vendedor? @relation(fields: [vendedorId], references: [id])
+  vendedorId String?
+  vendas     Venda[]
+}
+
+model Comprador {
+  id        String    @id
+  nome      String
+  telefone  Int
+  updateAt  DateTime?
+  createdAt DateTime  @default(now())
+  compras   Venda[]
+}
+
+model Venda {
+  id           String     @id
+  quantidade   Int
+  delivery     Boolean
+  retirada     Boolean
+  localEntrega String
+  updateAt     DateTime?
+  createdAt    DateTime   @default(now())
+  Produto      Produto?   @relation(fields: [produtoId], references: [id])
+  produtoId    String?
+  Comprador    Comprador? @relation(fields: [compradorId], references: [id])
+  compradorId  String?
+}
