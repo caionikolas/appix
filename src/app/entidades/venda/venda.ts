@@ -1,3 +1,5 @@
+import { Replace } from 'src/helpers/Replace';
+
 interface VendaProps {
   quantidade: number;
   delivery: boolean;
@@ -10,8 +12,11 @@ interface VendaProps {
 export class Venda {
   private props: VendaProps;
 
-  constructor(props: VendaProps) {
-    this.props = props;
+  constructor(props: Replace<VendaProps, { createdAt?: Date }>) {
+    this.props = {
+      ...props,
+      createdAt: props.createdAt ?? new Date(),
+    };
   }
 
   public set quantidade(quantidade: number) {

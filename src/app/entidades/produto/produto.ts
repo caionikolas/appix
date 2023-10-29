@@ -1,3 +1,5 @@
+import { Replace } from 'src/helpers/Replace';
+
 interface ProdutoProps {
   nome: string;
   observacao: string;
@@ -9,8 +11,11 @@ interface ProdutoProps {
 export class Produto {
   private props: ProdutoProps;
 
-  constructor(props: ProdutoProps) {
-    this.props = props;
+  constructor(props: Replace<ProdutoProps, { createdAt?: Date }>) {
+    this.props = {
+      ...props,
+      createdAt: props.createdAt ?? new Date(),
+    };
   }
 
   public set nome(nome: string) {

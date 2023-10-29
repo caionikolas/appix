@@ -1,3 +1,4 @@
+import { Replace } from 'src/helpers/Replace';
 import { Descricao } from './descricao';
 
 export interface VendedorProps {
@@ -12,8 +13,11 @@ export interface VendedorProps {
 export class Vendedor {
   private props: VendedorProps;
 
-  constructor(props: VendedorProps) {
-    this.props = props;
+  constructor(props: Replace<VendedorProps, { createdAt?: Date }>) {
+    this.props = {
+      ...props,
+      createdAt: props.createdAt ?? new Date(),
+    };
   }
 
   public set nome(nome: string) {
