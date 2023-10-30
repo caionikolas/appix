@@ -1,8 +1,10 @@
+import { EmMemoriaVendedoresRepositorio } from '../../../test/repositorios/em-memoria-vendedor-repositorio';
 import { AdicionarVendedor } from './adicionar-vendedor';
 
 describe('Adicionar vendedor', () => {
   test('Deve ser possivel adicionar um Vendedor', async () => {
-    const adicionarVendedor = new AdicionarVendedor();
+    const vendedoresRepositorio = new EmMemoriaVendedoresRepositorio();
+    const adicionarVendedor = new AdicionarVendedor(vendedoresRepositorio);
 
     const { vendedor } = await adicionarVendedor.execute({
       nome: 'Eduardo',
@@ -11,6 +13,10 @@ describe('Adicionar vendedor', () => {
       retirada: true,
     });
 
-    expect(vendedor).toBeTruthy();
+    expect(
+      vendedoresRepositorio.vendedores[
+        vendedoresRepositorio.vendedores.length - 1
+      ],
+    ).toEqual(vendedor);
   });
 });

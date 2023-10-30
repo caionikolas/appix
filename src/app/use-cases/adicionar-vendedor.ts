@@ -1,6 +1,6 @@
 import { Descricao } from '../entidades/vendedor/descricao';
 import { Vendedor } from '../entidades/vendedor/vendedor';
-import { VendedoresRepositorios } from '../repositorios/vendedor-repositorio';
+import { VendedoresRepositorios } from '../repositorios/vendedores-repositorio';
 
 interface AdicionarVendedorRequest {
   nome: string;
