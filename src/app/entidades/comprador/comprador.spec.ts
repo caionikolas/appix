@@ -1,9 +1,9 @@
 import { Comprador } from './comprador';
 
 describe('Comprador', () => {
-  test('deve ser possivel cadestrar um Comprador', () => {
+  test('deve ser possivel cadastrar um Comprador', () => {
     const comprador = new Comprador({
-      nome: 'Sabão',
+      nome: 'Claudio',
       telefone: 8612345678,
     });
 
