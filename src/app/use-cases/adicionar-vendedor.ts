@@ -1,6 +1,7 @@
 import { Descricao } from '../entidades/vendedor/descricao';
 import { Vendedor } from '../entidades/vendedor/vendedor';
 import { VendedoresRepositorios } from '../repositorios/vendedores-repositorio';
+import { Injectable } from '@nestjs/common';
 
 interface AdicionarVendedorRequest {
   nome: string;
@@ -13,6 +14,7 @@ interface AdicionarVendedorResponse {
   vendedor: Vendedor;
 }
 
+@Injectable()
 export class AdicionarVendedor {
   constructor(private vendedoresRepositorios: VendedoresRepositorios) {}
 

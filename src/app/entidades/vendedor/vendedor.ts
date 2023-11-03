@@ -1,5 +1,6 @@
 import { Replace } from 'src/helpers/Replace';
 import { Descricao } from './descricao';
+import { randomUUID } from 'node:crypto';
 
 export interface VendedorProps {
   nome: string;
@@ -11,13 +12,19 @@ export interface VendedorProps {
 }
 
 export class Vendedor {
+  private _id: string;
   private props: VendedorProps;
 
   constructor(props: Replace<VendedorProps, { createdAt?: Date }>) {
+    this._id = randomUUID();
     this.props = {
       ...props,
       createdAt: props.createdAt ?? new Date(),
     };
+  }
+
+  public get id() {
+    return this._id;
   }
 
   public set nome(nome: string) {
