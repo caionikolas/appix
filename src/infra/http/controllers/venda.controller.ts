@@ -1,7 +1,16 @@
-import { Body, Controller, Post, Get, Delete } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Post,
+  Get,
+  Delete,
+  HttpException,
+  HttpStatus,
+} from '@nestjs/common';
 import { PrismaService } from '../../database/prisma/prisma.service';
 import { AdicionarVenda } from 'src/app/use-cases/adicionar-venda';
 import { CriarVenda } from '../dtos/criar-venda-body';
+import { prisma } from '../controllers/produto.controller';
 
 @Controller('vendas')
 export class VendaController {
@@ -25,6 +34,26 @@ export class VendaController {
       produtoId,
       compradorId,
     } = body;
+
+    const isProdutoId = await prisma.produto.findUnique({
+      where: {
+        id: produtoId,
+      },
+    });
+
+    if (!isProdutoId) {
+      throw new HttpException('Produto inexistente', HttpStatus.BAD_REQUEST);
+    }
+
+    const isCompradorId = await prisma.comprador.findUnique({
+      where: {
+        id: compradorId,
+      },
+    });
+
+    if (!isCompradorId) {
+      throw new HttpException('Comprador inexistente', HttpStatus.BAD_REQUEST);
+    }
 
     const { venda } = await this.adicionarVenda.execute({
       quantidade,

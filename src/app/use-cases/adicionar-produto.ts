@@ -20,7 +20,7 @@ export class AdicionarProduto {
   async execute(
     request: AdicionarProdutoRequest,
   ): Promise<AdicionarProdutoResponse> {
-    const { vendedorId, nome, observacao, preco } = request;
+    const { nome, observacao, preco, vendedorId } = request;
 
     const produto = new Produto({
       nome,
