@@ -34,6 +34,6 @@ export class VendedorController {
     await this.prismaService.vendedor.deleteMany();
     await this.prismaService.produto.deleteMany();
 
-    return 'Usuários deletados';
+    return 'Usuários vendedores deletados';
   }
 }

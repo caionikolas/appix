@@ -1,4 +1,5 @@
 import { Replace } from 'src/helpers/Replace';
+import { randomUUID } from 'crypto';
 
 interface VendaProps {
   quantidade: number;
@@ -7,16 +8,24 @@ interface VendaProps {
   localEntrega: string;
   updateAt?: Date | null;
   createdAt: Date;
+  produtoId: string;
+  compradorId: string;
 }
 
 export class Venda {
+  private _id: string;
   private props: VendaProps;
 
   constructor(props: Replace<VendaProps, { createdAt?: Date }>) {
+    this._id = randomUUID();
     this.props = {
       ...props,
       createdAt: props.createdAt ?? new Date(),
     };
+  }
+
+  public get id() {
+    return this._id;
   }
 
   public set quantidade(quantidade: number) {
@@ -24,7 +33,7 @@ export class Venda {
   }
 
   public get quantidade(): number {
-    return this.quantidade;
+    return this.props.quantidade;
   }
 
   public set delivery(delivery: boolean) {
@@ -32,7 +41,7 @@ export class Venda {
   }
 
   public get delivery(): boolean {
-    return this.delivery;
+    return this.props.delivery;
   }
 
   public set retirada(retirada: boolean) {
@@ -40,7 +49,7 @@ export class Venda {
   }
 
   public get retirada(): boolean {
-    return this.retirada;
+    return this.props.retirada;
   }
 
   public set localEntrega(localEntrega: string) {
@@ -48,7 +57,7 @@ export class Venda {
   }
 
   public get localEntrega(): string {
-    return this.localEntrega;
+    return this.props.localEntrega;
   }
 
   public set updateAt(updateAt: Date | null | undefined) {
@@ -61,5 +70,12 @@ export class Venda {
 
   public get createdAt(): Date {
     return this.props.createdAt;
+  }
+
+  public get produtoId(): string {
+    return this.props.produtoId;
+  }
+  public get compradorId(): string {
+    return this.props.compradorId;
   }
 }

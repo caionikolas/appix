@@ -1,4 +1,5 @@
 import { Replace } from 'src/helpers/Replace';
+import { randomUUID } from 'node:crypto';
 
 interface CompradorProps {
   nome: string;
@@ -8,13 +9,19 @@ interface CompradorProps {
 }
 
 export class Comprador {
+  private _id: string;
   private props: CompradorProps;
 
   constructor(props: Replace<CompradorProps, { createdAt?: Date }>) {
+    this._id = randomUUID();
     this.props = {
       ...props,
       createdAt: props.createdAt ?? new Date(),
     };
+  }
+
+  public get id() {
+    return this._id;
   }
 
   public set nome(nome: string) {
@@ -22,7 +29,7 @@ export class Comprador {
   }
 
   public get nome(): string {
-    return this.nome;
+    return this.props.nome;
   }
 
   public set telefone(telefone: number) {
@@ -30,7 +37,7 @@ export class Comprador {
   }
 
   public get telefone(): number {
-    return this.telefone;
+    return this.props.telefone;
   }
 
   public set updateAt(updateAt: Date | null | undefined) {
@@ -38,10 +45,10 @@ export class Comprador {
   }
 
   public get updateAt(): Date | null | undefined {
-    return this.updateAt;
+    return this.props.updateAt;
   }
 
   public get createdAt(): Date {
-    return this.createdAt;
+    return this.props.createdAt;
   }
 }

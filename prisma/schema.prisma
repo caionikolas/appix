@@ -36,7 +36,7 @@ model Produto {
 model Comprador {
   id        String    @id
   nome      String
-  telefone  Int
+  telefone  BigInt
   updateAt  DateTime?
   createdAt DateTime  @default(now())
   compras   Venda[]

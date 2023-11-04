@@ -25,7 +25,7 @@ CREATE TABLE "Produto" (
 CREATE TABLE "Comprador" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "nome" TEXT NOT NULL,
-    "telefone" INTEGER NOT NULL,
+    "telefone" BIGINT NOT NULL,
     "updateAt" DATETIME,
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );

@@ -1,3 +1,4 @@
+import { Injectable } from '@nestjs/common';
 import { Comprador } from '../entidades/comprador/comprador';
 import { CompradoresRepositorios } from '../repositorios/compradores-repositorio';
 
@@ -10,6 +11,7 @@ interface AdicionarCompradorResponse {
   comprador: Comprador;
 }
 
+@Injectable()
 export class AdicionarComprador {
   constructor(private compradoresRepositorios: CompradoresRepositorios) {}
 
