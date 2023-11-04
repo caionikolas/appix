@@ -1,4 +1,4 @@
-import { Body, Controller, Post, Get } from '@nestjs/common';
+import { Body, Controller, Post, Get, Delete } from '@nestjs/common';
 import { PrismaService } from '../../database/prisma/prisma.service';
 import { AdicionarProduto } from 'src/app/use-cases/adicionar-produto';
 import { CriarProduto } from '../dtos/criar-produto-body';
@@ -27,5 +27,12 @@ export class ProdutoController {
     });
 
     return { produto };
+  }
+
+  @Delete('deletar')
+  async delete() {
+    await this.prismaService.produto.deleteMany();
+
+    return 'Produtos deletados';
   }
 }

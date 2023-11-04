@@ -1,4 +1,4 @@
-import { Body, Controller, Post, Get } from '@nestjs/common';
+import { Body, Controller, Post, Get, Delete } from '@nestjs/common';
 import { CriarVendedor } from '../dtos/criar-vendedor-body';
 import { AdicionarVendedor } from 'src/app/use-cases/adicionar-vendedor';
 import { PrismaService } from '../../database/prisma/prisma.service';
@@ -27,5 +27,13 @@ export class VendedorController {
     });
 
     return { vendedor };
+  }
+
+  @Delete('deletar')
+  async delete() {
+    await this.prismaService.vendedor.deleteMany();
+    await this.prismaService.produto.deleteMany();
+
+    return 'Usuários deletados';
   }
 }
