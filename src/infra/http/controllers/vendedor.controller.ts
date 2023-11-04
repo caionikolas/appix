@@ -1,13 +1,18 @@
 import { Body, Controller, Post, Get } from '@nestjs/common';
 import { CriarVendedor } from '../dtos/criar-vendedor-body';
 import { AdicionarVendedor } from 'src/app/use-cases/adicionar-vendedor';
+import { PrismaService } from '../../database/prisma/prisma.service';
 
 @Controller('vendedor')
 export class VendedorController {
-  constructor(private adicionarVendedor: AdicionarVendedor) {}
+  constructor(
+    private adicionarVendedor: AdicionarVendedor,
+    private readonly prismaService: PrismaService,
+  ) {}
+
   @Get()
-  Hello() {
-    return 'ola';
+  list() {
+    return this.prismaService.vendedor.findMany();
   }
 
   @Post()

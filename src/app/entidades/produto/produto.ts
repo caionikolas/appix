@@ -1,3 +1,4 @@
+import { randomUUID } from 'crypto';
 import { Replace } from 'src/helpers/Replace';
 
 interface ProdutoProps {
@@ -6,16 +7,23 @@ interface ProdutoProps {
   preco: number;
   updateAt?: Date | null;
   createdAt: Date;
+  vendedorId: string;
 }
 
 export class Produto {
+  private _id: string;
   private props: ProdutoProps;
 
   constructor(props: Replace<ProdutoProps, { createdAt?: Date }>) {
+    this._id = randomUUID();
     this.props = {
       ...props,
       createdAt: props.createdAt ?? new Date(),
     };
+  }
+
+  public get id() {
+    return this._id;
   }
 
   public set nome(nome: string) {
@@ -23,7 +31,7 @@ export class Produto {
   }
 
   public get nome(): string {
-    return this.nome;
+    return this.props.nome;
   }
 
   public set observacao(observacao: string) {
@@ -31,7 +39,7 @@ export class Produto {
   }
 
   public get observacao(): string {
-    return this.observacao;
+    return this.props.observacao;
   }
 
   public set preco(preco: number) {
@@ -39,7 +47,7 @@ export class Produto {
   }
 
   public get preco(): number {
-    return this.preco;
+    return this.props.preco;
   }
 
   public set updateAt(updateAt: Date | null | undefined) {
@@ -47,10 +55,14 @@ export class Produto {
   }
 
   public get updateAt(): Date | null | undefined {
-    return this.updateAt;
+    return this.props.updateAt;
   }
 
   public get createdAt(): Date {
-    return this.createdAt;
+    return this.props.createdAt;
+  }
+
+  public get vendedorId(): string {
+    return this.props.vendedorId;
   }
 }

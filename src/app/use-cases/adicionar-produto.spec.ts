@@ -10,6 +10,7 @@ describe('Cadastrando um produto', () => {
       nome: 'Sabão',
       observacao: 'Lavanda',
       preco: 12.9,
+      vendedorId: 'eabbc8b8-3bce-44cc-94dd-d6c6636161cf',
     });
 
     expect(
