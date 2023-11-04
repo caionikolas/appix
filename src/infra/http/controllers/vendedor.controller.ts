@@ -1,7 +1,8 @@
 import { Body, Controller, Post, Get, Delete } from '@nestjs/common';
 import { CriarVendedor } from '../dtos/criar-vendedor-body';
-import { AdicionarVendedor } from 'src/app/use-cases/adicionar-vendedor';
+import { AdicionarVendedor } from '@app/use-cases/adicionar-vendedor';
 import { PrismaService } from '../../database/prisma/prisma.service';
+import { VendedorViewModel } from '../view-models/vendedor-view-model';
 
 @Controller('vendedor')
 export class VendedorController {
@@ -26,7 +27,9 @@ export class VendedorController {
       retirada,
     });
 
-    return { vendedor };
+    return {
+      vendedor: VendedorViewModel.toHTTP(vendedor),
+    };
   }
 
   @Delete('deletar')

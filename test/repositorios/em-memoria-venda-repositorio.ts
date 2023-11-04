@@ -1,5 +1,5 @@
-import { Venda } from 'src/app/entidades/venda/venda';
-import { VendasRepositorios } from 'src/app/repositorios/vendas.repositorio';
+import { Venda } from '@app/entidades/venda/venda';
+import { VendasRepositorios } from '@app/repositorios/vendas.repositorio';
 
 export class EmMemoriaVendasRepositorio implements VendasRepositorios {
   vendas: Venda[] = [];

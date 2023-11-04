@@ -1,4 +1,4 @@
-import { EmMemoriaProdutosRepositorio } from '../../../test/repositorios/em-memoria-produto-repositorio';
+import { EmMemoriaProdutosRepositorio } from '@test/repositorios/em-memoria-produto-repositorio';
 import { AdicionarProduto } from './adicionar-produto';
 
 describe('Cadastrando um produto', () => {

@@ -1,5 +1,5 @@
-import { Vendedor } from '../../src/app/entidades/vendedor/vendedor';
-import { VendedoresRepositorios } from '../../src/app/repositorios/vendedores-repositorio';
+import { Vendedor } from '@app/entidades/vendedor/vendedor';
+import { VendedoresRepositorios } from '@app/repositorios/vendedores-repositorio';
 
 export class EmMemoriaVendedoresRepositorio implements VendedoresRepositorios {
   public vendedores: Vendedor[] = [];

@@ -1,7 +1,7 @@
 import { PrismaService } from '../prisma.service';
 import { Injectable } from '@nestjs/common';
-import { CompradoresRepositorios } from 'src/app/repositorios/compradores-repositorio';
-import { Comprador } from 'src/app/entidades/comprador/comprador';
+import { CompradoresRepositorios } from '@app/repositorios/compradores-repositorio';
+import { Comprador } from '@app/entidades/comprador/comprador';
 
 @Injectable()
 export class PrismaCompradoresRepositorio implements CompradoresRepositorios {

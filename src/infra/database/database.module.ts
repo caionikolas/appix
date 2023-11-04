@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
 import { PrismaService } from './prisma/prisma.service';
-import { VendedoresRepositorios } from 'src/app/repositorios/vendedores-repositorio';
+import { VendedoresRepositorios } from '@app/repositorios/vendedores-repositorio';
 import { PrismaVendedoresRepositorio } from './prisma/repositorios/prisma-vendedor-repositorio';
-import { ProdutosRepositorios } from 'src/app/repositorios/produtos-repositorio';
+import { ProdutosRepositorios } from '@app/repositorios/produtos-repositorio';
 import { PrismaProdutosRepositorio } from './prisma/repositorios/prisma-produto-repositorio';
-import { CompradoresRepositorios } from 'src/app/repositorios/compradores-repositorio';
+import { CompradoresRepositorios } from '@app/repositorios/compradores-repositorio';
 import { PrismaCompradoresRepositorio } from './prisma/repositorios/prisma-comprador-repositorio';
-import { VendasRepositorios } from 'src/app/repositorios/vendas.repositorio';
+import { VendasRepositorios } from '@app/repositorios/vendas.repositorio';
 import { PrismaVendasRepositorio } from './prisma/repositorios/prisma-venda-repositorio';
 
 @Module({

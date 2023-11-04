@@ -1,4 +1,4 @@
-import { EmMemoriaVendedoresRepositorio } from '../../../test/repositorios/em-memoria-vendedor-repositorio';
+import { EmMemoriaVendedoresRepositorio } from '@test/repositorios/em-memoria-vendedor-repositorio';
 import { AdicionarVendedor } from './adicionar-vendedor';
 
 describe('Adicionar vendedor', () => {

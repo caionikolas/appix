@@ -1,7 +1,7 @@
 import { PrismaService } from '../prisma.service';
 import { Injectable } from '@nestjs/common';
-import { ProdutosRepositorios } from 'src/app/repositorios/produtos-repositorio';
-import { Produto } from 'src/app/entidades/produto/produto';
+import { ProdutosRepositorios } from '@app/repositorios/produtos-repositorio';
+import { Produto } from '@app/entidades/produto/produto';
 
 @Injectable()
 export class PrismaProdutosRepositorio implements ProdutosRepositorios {

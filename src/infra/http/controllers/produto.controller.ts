@@ -7,10 +7,10 @@ import {
   HttpException,
   HttpStatus,
 } from '@nestjs/common';
-import { AdicionarProduto } from 'src/app/use-cases/adicionar-produto';
+import { AdicionarProduto } from '@app/use-cases/adicionar-produto';
 import { CriarProduto } from '../dtos/criar-produto-body';
 import { PrismaClient } from '@prisma/client';
-import { PrismaService } from 'src/infra/database/prisma/prisma.service';
+import { PrismaService } from '@infra/database/prisma/prisma.service';
 
 export const prisma = new PrismaClient();
 

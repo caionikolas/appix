@@ -1,7 +1,7 @@
 import { PrismaService } from '../prisma.service';
 import { Injectable } from '@nestjs/common';
-import { VendasRepositorios } from 'src/app/repositorios/vendas.repositorio';
-import { Venda } from 'src/app/entidades/venda/venda';
+import { VendasRepositorios } from '@app/repositorios/vendas.repositorio';
+import { Venda } from '@app/entidades/venda/venda';
 
 @Injectable()
 export class PrismaVendasRepositorio implements VendasRepositorios {

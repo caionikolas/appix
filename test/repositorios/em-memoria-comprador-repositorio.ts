@@ -1,5 +1,5 @@
-import { Comprador } from '../../src/app/entidades/comprador/comprador';
-import { CompradoresRepositorios } from '../../src/app/repositorios/compradores-repositorio';
+import { Comprador } from '@app/entidades/comprador/comprador';
+import { CompradoresRepositorios } from '@app/repositorios/compradores-repositorio';
 
 export class EmMemoriaCompradoresRepositorio
   implements CompradoresRepositorios
