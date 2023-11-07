@@ -49,6 +49,7 @@ model Venda {
   retirada     Boolean
   localEntrega String
   updateAt     DateTime?
+  canceledAt   DateTime?
   createdAt    DateTime   @default(now())
   Produto      Produto?   @relation(fields: [produtoId], references: [id])
   produtoId    String?

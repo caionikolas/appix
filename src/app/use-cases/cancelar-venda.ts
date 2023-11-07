@@ -31,5 +31,7 @@ export class CancelarVenda {
     if (!venda) {
       throw new VendaNaoEncontrada();
     }
+
+    await this.vendasRepositorios.save(venda);
   }
 }

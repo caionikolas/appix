@@ -7,6 +7,7 @@ interface VendaProps {
   retirada: boolean;
   localEntrega: string;
   updateAt?: Date | null;
+  canceledAt?: Date | null;
   createdAt: Date;
   produtoId: string;
   compradorId: string;
@@ -60,12 +61,20 @@ export class Venda {
     return this.props.localEntrega;
   }
 
-  public set updateAt(updateAt: Date | null | undefined) {
-    this.updateAt = updateAt;
+  public update() {
+    this.props.updateAt = new Date();
   }
 
   public get updateAt(): Date | null | undefined {
     return this.props.updateAt;
+  }
+
+  public get canceledAt(): Date | null | undefined {
+    return this.props.canceledAt;
+  }
+
+  public cancel() {
+    this.props.canceledAt = new Date();
   }
 
   public get createdAt(): Date {
@@ -75,6 +84,7 @@ export class Venda {
   public get produtoId(): string {
     return this.props.produtoId;
   }
+
   public get compradorId(): string {
     return this.props.compradorId;
   }

@@ -7,6 +7,8 @@ describe('Venda', () => {
       delivery: false,
       retirada: true,
       localEntrega: 'Bairro Fulano de Tal',
+      produtoId: 'exemplo-produtoId',
+      compradorId: 'exemplo-compradorId',
     });
 
     expect(venda).toBeTruthy();

@@ -2,10 +2,15 @@ import { PrismaService } from '../prisma.service';
 import { Injectable } from '@nestjs/common';
 import { VendasRepositorios } from '@app/repositorios/vendas.repositorio';
 import { Venda } from '@app/entidades/venda/venda';
+import { VendaId } from '@app/use-cases/cancelar-venda';
 
 @Injectable()
 export class PrismaVendasRepositorio implements VendasRepositorios {
   constructor(private prismaService: PrismaService) {}
+
+  async findById(vendaId: VendaId): Promise<Venda> {
+    throw new Error('Method not implemented.');
+  }
 
   async create(venda: Venda): Promise<void> {
     await this.prismaService.venda.create({
@@ -29,5 +34,9 @@ export class PrismaVendasRepositorio implements VendasRepositorios {
         },
       },
     });
+  }
+
+  async save(venda: Venda): Promise<void> {
+    throw new Error('Method not implemented.');
   }
 }
