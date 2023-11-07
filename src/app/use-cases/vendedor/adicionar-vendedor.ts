@@ -1,6 +1,6 @@
-import { Descricao } from '../entidades/vendedor/descricao';
-import { Vendedor } from '../entidades/vendedor/vendedor';
-import { VendedoresRepositorios } from '../repositorios/vendedores-repositorio';
+import { Descricao } from '@app/entidades/vendedor/descricao';
+import { Vendedor } from '@app/entidades/vendedor/vendedor';
+import { VendedoresRepositorios } from '@app/repositorios/vendedores-repositorio';
 import { Injectable } from '@nestjs/common';
 
 interface AdicionarVendedorRequest {

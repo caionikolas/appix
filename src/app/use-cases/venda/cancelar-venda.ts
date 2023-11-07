@@ -1,6 +1,6 @@
-import { VendasRepositorios } from '../repositorios/vendas.repositorio';
+import { VendasRepositorios } from '@app/repositorios/vendas.repositorio';
 import { Injectable } from '@nestjs/common';
-import { VendaNaoEncontrada } from './erros/venda-not-found';
+import { VendaNaoEncontrada } from '../erros/venda-not-found';
 
 interface CancelarVendaRequest {
   vendaId: string;
@@ -20,6 +20,8 @@ export class CancelarVenda {
     if (!venda) {
       throw new VendaNaoEncontrada();
     }
+
+    venda.cancel();
 
     await this.vendasRepositorios.save(venda);
   }

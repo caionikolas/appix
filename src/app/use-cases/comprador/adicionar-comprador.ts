@@ -1,6 +1,6 @@
+import { Comprador } from '@app/entidades/comprador/comprador';
+import { CompradoresRepositorios } from '@app/repositorios/compradores-repositorio';
 import { Injectable } from '@nestjs/common';
-import { Comprador } from '../entidades/comprador/comprador';
-import { CompradoresRepositorios } from '../repositorios/compradores-repositorio';
 
 interface AdicionarCompradorRequest {
   nome: string;

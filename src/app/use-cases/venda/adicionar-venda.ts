@@ -1,5 +1,5 @@
-import { Venda } from '../entidades/venda/venda';
-import { VendasRepositorios } from '../repositorios/vendas.repositorio';
+import { Venda } from '@app/entidades/venda/venda';
+import { VendasRepositorios } from '@app/repositorios/vendas.repositorio';
 import { Injectable } from '@nestjs/common';
 
 interface AdicionarVendaRequest {

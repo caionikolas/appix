@@ -1,5 +1,5 @@
-import { Produto } from '../entidades/produto/produto';
-import { ProdutosRepositorios } from '../repositorios/produtos-repositorio';
+import { Produto } from '@app/entidades/produto/produto';
+import { ProdutosRepositorios } from '@app/repositorios/produtos-repositorio';
 import { Injectable } from '@nestjs/common';
 
 interface AdicionarProdutoRequest {
