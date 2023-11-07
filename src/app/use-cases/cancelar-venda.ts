@@ -3,13 +3,7 @@ import { Injectable } from '@nestjs/common';
 import { VendaNaoEncontrada } from './erros/venda-not-found';
 
 interface CancelarVendaRequest {
-  produtoId: string;
-  compradorId: string;
-}
-
-export interface VendaId {
-  produtoId: string;
-  compradorId: string;
+  vendaId: string;
 }
 
 type CancelarVendaResponse = void;
@@ -19,12 +13,7 @@ export class CancelarVenda {
   constructor(private vendasRepositorios: VendasRepositorios) {}
 
   async execute(request: CancelarVendaRequest): Promise<CancelarVendaResponse> {
-    const { produtoId, compradorId } = request;
-
-    const vendaId = {
-      produtoId,
-      compradorId,
-    };
+    const { vendaId } = request;
 
     const venda = await this.vendasRepositorios.findById(vendaId);
 

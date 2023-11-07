@@ -19,8 +19,7 @@ describe('Cancelando uma venda', () => {
     await vendasRepositorio.create(venda);
 
     await cancelarVenda.execute({
-      produtoId: venda.produtoId,
-      compradorId: venda.compradorId,
+      vendaId: venda.id,
     });
 
     expect(vendasRepositorio.vendas[0].canceledAt).toEqual(expect.any(Date));

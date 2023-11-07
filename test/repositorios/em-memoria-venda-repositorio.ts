@@ -1,12 +1,11 @@
 import { Venda } from '@app/entidades/venda/venda';
 import { VendasRepositorios } from '@app/repositorios/vendas.repositorio';
-import { VendaId } from '@app/use-cases/cancelar-venda';
 
 export class EmMemoriaVendasRepositorio implements VendasRepositorios {
   vendas: Venda[] = [];
 
-  async findById(vendaId: VendaId): Promise<Venda | null> {
-    const venda = this.vendas.find((item) => item.id === vendaId.produtoId);
+  async findById(produtoId: string): Promise<Venda | null> {
+    const venda = this.vendas.find((item) => item.id === produtoId);
 
     if (!venda) {
       return null;

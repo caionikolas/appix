@@ -1,8 +1,7 @@
-import { VendaId } from '@app/use-cases/cancelar-venda';
 import { Venda } from '../entidades/venda/venda';
 
 export abstract class VendasRepositorios {
   abstract create(venda: Venda): Promise<void>;
-  abstract findById(vendaId: VendaId): Promise<Venda | null>;
+  abstract findById(vendaId: string): Promise<Venda | null>;
   abstract save(venda: Venda): Promise<void>;
 }
