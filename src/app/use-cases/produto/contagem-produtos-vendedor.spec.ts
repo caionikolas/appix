@@ -17,10 +17,17 @@ describe('Contagem de produtos de um vendedor especifico', () => {
       nome: 'Sabão',
       observacao: 'Lavanda',
       preco: 12.9,
-      vendedorId: 'id-2',
+      vendedorId: 'exemplo-id-1',
     });
 
-    const count = await produtosRepositorio.count('exemplo-id-1');
+    await adicionarProduto.execute({
+      nome: 'Sabão',
+      observacao: 'Lavanda',
+      preco: 12.9,
+      vendedorId: 'exemplo-id-2',
+    });
+
+    const count = await produtosRepositorio.countManyProdutos('exemplo-id-1');
 
     expect(count).toEqual(2);
   });

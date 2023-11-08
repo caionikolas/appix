@@ -18,7 +18,8 @@ export class ContagemProdutos {
   ): Promise<ContagemProdutosResponse> {
     const { vendedorId } = request;
 
-    const contador = await this.produtosRepositorios.count(vendedorId);
+    const contador =
+      await this.produtosRepositorios.countManyProdutos(vendedorId);
 
     return {
       contador,

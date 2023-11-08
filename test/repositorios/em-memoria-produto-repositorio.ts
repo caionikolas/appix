@@ -14,8 +14,8 @@ export class EmMemoriaProdutosRepositorio implements ProdutosRepositorios {
     return produto;
   }
 
-  async count(vendedorId: string): Promise<number> {
-    const count = this.produtos.map(
+  async countManyProdutos(vendedorId: string): Promise<number> {
+    const count = this.produtos.filter(
       (item) => item.vendedorId === vendedorId,
     ).length;
 

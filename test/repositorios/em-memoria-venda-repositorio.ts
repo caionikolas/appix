@@ -15,7 +15,7 @@ export class EmMemoriaVendasRepositorio implements VendasRepositorios {
   }
 
   async countManyCompradores(compradorId: string): Promise<number> {
-    const count = this.vendas.map(
+    const count = this.vendas.filter(
       (item) => item.compradorId == compradorId,
     ).length;
 
@@ -23,7 +23,9 @@ export class EmMemoriaVendasRepositorio implements VendasRepositorios {
   }
 
   async countManyProdutos(produtoId: string): Promise<number> {
-    const count = this.vendas.map((item) => item.produtoId == produtoId).length;
+    const count = this.vendas.filter(
+      (item) => item.produtoId == produtoId,
+    ).length;
 
     return count;
   }
