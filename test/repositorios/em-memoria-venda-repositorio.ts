@@ -14,6 +14,20 @@ export class EmMemoriaVendasRepositorio implements VendasRepositorios {
     return venda;
   }
 
+  async countManyCompradores(compradorId: string): Promise<number> {
+    const count = this.vendas.map(
+      (item) => item.compradorId == compradorId,
+    ).length;
+
+    return count;
+  }
+
+  async countManyProdutos(produtoId: string): Promise<number> {
+    const count = this.vendas.map((item) => item.produtoId == produtoId).length;
+
+    return count;
+  }
+
   async create(venda: Venda) {
     this.vendas.push(venda);
   }
