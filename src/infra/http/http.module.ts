@@ -1,13 +1,13 @@
 import { Module } from '@nestjs/common';
 import { VendedorController } from './controllers/vendedor.controller';
 import { DatabaseModule } from '../database/database.module';
-import { AdicionarVendedor } from '@app/use-cases/adicionar-vendedor';
+import { AdicionarVendedor } from '@app/use-cases/vendedor/adicionar-vendedor';
 import { ProdutoController } from './controllers/produto.controller';
-import { AdicionarProduto } from '@app/use-cases/adicionar-produto';
+import { AdicionarProduto } from '@app/use-cases/produto/adicionar-produto';
 import { CompradorController } from './controllers/comprador.controller';
-import { AdicionarComprador } from '@app/use-cases/adicionar-comprador';
+import { AdicionarComprador } from '@app/use-cases/comprador/adicionar-comprador';
 import { VendaController } from './controllers/venda.controller';
-import { AdicionarVenda } from '@app/use-cases/adicionar-venda';
+import { AdicionarVenda } from '@app/use-cases/venda/adicionar-venda';
 
 @Module({
   imports: [DatabaseModule],

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { CompradoresRepositorios } from '@app/repositorios/compradores-repositorio';
-import { CompradorNotFound } from '../erros/comprador-not-found';
+import { CompradorNotFound } from '../../../infra/http/errors/comprador-not-found';
 
 interface RemoverCompradorRequest {
   compradorId: string;

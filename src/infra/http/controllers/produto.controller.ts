@@ -7,7 +7,7 @@ import {
   HttpException,
   HttpStatus,
 } from '@nestjs/common';
-import { AdicionarProduto } from '@app/use-cases/adicionar-produto';
+import { AdicionarProduto } from '@app/use-cases/produto/adicionar-produto';
 import { CriarProduto } from '../dtos/criar-produto-body';
 import { PrismaClient } from '@prisma/client';
 import { PrismaService } from '@infra/database/prisma/prisma.service';

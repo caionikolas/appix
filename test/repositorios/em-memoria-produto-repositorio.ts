@@ -14,16 +14,16 @@ export class EmMemoriaProdutosRepositorio implements ProdutosRepositorios {
     return produto;
   }
 
+  async create(produto: Produto) {
+    this.produtos.push(produto);
+  }
+
   async countManyProdutos(vendedorId: string): Promise<number> {
     const count = this.produtos.filter(
       (item) => item.vendedorId === vendedorId,
     ).length;
 
     return count;
-  }
-
-  async create(produto: Produto) {
-    this.produtos.push(produto);
   }
 
   async delete(produto: Produto): Promise<void> {

@@ -1,6 +1,6 @@
 import { Body, Controller, Post, Get, Delete } from '@nestjs/common';
 import { CriarVendedor } from '../dtos/criar-vendedor-body';
-import { AdicionarVendedor } from '@app/use-cases/adicionar-vendedor';
+import { AdicionarVendedor } from '@app/use-cases/vendedor/adicionar-vendedor';
 import { PrismaService } from '../../database/prisma/prisma.service';
 import { VendedorViewModel } from '../view-models/vendedor-view-model';
 

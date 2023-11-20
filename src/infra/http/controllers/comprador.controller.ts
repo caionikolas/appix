@@ -1,6 +1,6 @@
 import { Body, Controller, Post, Get, Delete } from '@nestjs/common';
 import { PrismaService } from '../../database/prisma/prisma.service';
-import { AdicionarComprador } from 'src/app/use-cases/adicionar-comprador';
+import { AdicionarComprador } from 'src/app/use-cases/comprador/adicionar-comprador';
 import { CriarComprador } from '../dtos/criar-comprador-body';
 
 @Controller('comprador')

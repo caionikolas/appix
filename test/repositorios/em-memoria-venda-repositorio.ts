@@ -14,6 +14,10 @@ export class EmMemoriaVendasRepositorio implements VendasRepositorios {
     return venda;
   }
 
+  async create(venda: Venda) {
+    this.vendas.push(venda);
+  }
+
   async countManyCompradores(compradorId: string): Promise<number> {
     const count = this.vendas.filter(
       (item) => item.compradorId == compradorId,
@@ -28,10 +32,6 @@ export class EmMemoriaVendasRepositorio implements VendasRepositorios {
     ).length;
 
     return count;
-  }
-
-  async create(venda: Venda) {
-    this.vendas.push(venda);
   }
 
   async save(venda: Venda): Promise<void> {

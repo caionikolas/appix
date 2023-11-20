@@ -14,6 +14,10 @@ export class EmMemoriaVendedoresRepositorio implements VendedoresRepositorios {
     return vendedor;
   }
 
+  async create(vendedor: Vendedor) {
+    this.vendedores.push(vendedor);
+  }
+
   async delete(vendedor: Vendedor): Promise<void> {
     const vendedorIndex = this.vendedores.indexOf(vendedor);
 
@@ -22,9 +26,5 @@ export class EmMemoriaVendedoresRepositorio implements VendedoresRepositorios {
     }
 
     this.vendedores.splice(vendedorIndex, 1);
-  }
-
-  async create(vendedor: Vendedor) {
-    this.vendedores.push(vendedor);
   }
 }

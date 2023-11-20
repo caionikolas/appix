@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { ProdutoNotFound } from '../erros/produto-not-found';
+import { ProdutoNotFound } from '../../../infra/http/errors/produto-not-found';
 import { ProdutosRepositorios } from '@app/repositorios/produtos-repositorio';
 
 interface RemoverProdutoRequest {

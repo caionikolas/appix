@@ -16,6 +16,10 @@ export class EmMemoriaCompradoresRepositorio
     return comprador;
   }
 
+  async create(comprador: Comprador) {
+    this.compradores.push(comprador);
+  }
+
   async delete(comprador: Comprador): Promise<void> {
     const compradorIndex = this.compradores.indexOf(comprador);
 
@@ -24,9 +28,5 @@ export class EmMemoriaCompradoresRepositorio
     }
 
     this.compradores.splice(compradorIndex, 1);
-  }
-
-  async create(comprador: Comprador) {
-    this.compradores.push(comprador);
   }
 }

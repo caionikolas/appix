@@ -1,6 +1,6 @@
 import { VendasRepositorios } from '@app/repositorios/vendas.repositorio';
 import { Injectable } from '@nestjs/common';
-import { VendaNaoEncontrada } from '../erros/venda-not-found';
+import { VendaNaoEncontrada } from '../../../infra/http/errors/venda-not-found';
 
 interface CancelarVendaRequest {
   vendaId: string;

@@ -1,6 +1,6 @@
 import { VendedoresRepositorios } from '@app/repositorios/vendedores-repositorio';
 import { Injectable } from '@nestjs/common';
-import { VendedorNotFound } from '../erros/vendedor-not-found';
+import { VendedorNotFound } from '../../../infra/http/errors/vendedor-not-found';
 
 interface RemoverVendedorRequest {
   vendedorId: string;

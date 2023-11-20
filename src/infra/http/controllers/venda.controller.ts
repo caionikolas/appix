@@ -8,7 +8,7 @@ import {
   HttpStatus,
 } from '@nestjs/common';
 import { PrismaService } from '../../database/prisma/prisma.service';
-import { AdicionarVenda } from '@app/use-cases/adicionar-venda';
+import { AdicionarVenda } from '@app/use-cases/venda/adicionar-venda';
 import { CriarVenda } from '../dtos/criar-venda-body';
 import { prisma } from '../controllers/produto.controller';
 

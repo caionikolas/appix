@@ -1,6 +1,7 @@
 import { EmMemoriaVendasRepositorio } from '@test/repositorios/em-memoria-venda-repositorio';
 import { CancelarVenda } from './cancelar-venda';
 import { Venda } from '@app/entidades/venda/venda';
+import { VendaNaoEncontrada } from '@infra/http/errors/venda-not-found';
 
 describe('Cancelando uma venda', () => {
   test('Deve ser possivel cancelar uma venda', async () => {
@@ -21,5 +22,18 @@ describe('Cancelando uma venda', () => {
     await cancelarVenda.execute({
       vendaId: venda.id,
     });
+
+    expect(vendasRepositorio.vendas[0].canceledAt).toEqual(expect.any(Date));
+  });
+
+  test('Não deve ser possivel cancelar uma venda que não existe', async () => {
+    const vendasRepositorio = new EmMemoriaVendasRepositorio();
+    const cancelarVenda = new CancelarVenda(vendasRepositorio);
+
+    expect(() => {
+      return cancelarVenda.execute({
+        vendaId: 'fake-vendaId',
+      });
+    }).rejects.toThrow(VendaNaoEncontrada);
   });
 });
