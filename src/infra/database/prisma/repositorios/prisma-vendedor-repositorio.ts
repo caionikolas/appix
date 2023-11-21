@@ -8,7 +8,17 @@ import { PrismaVendedorMappper } from '../mappers/prisma-vendedor-mapper';
 export class PrismaVendedoresRepositorio implements VendedoresRepositorios {
   constructor(private prisma: PrismaService) {}
   async findById(vendedorId: string): Promise<Vendedor> {
-    throw new Error('Method not implemented.');
+    const vendedor = await this.prisma.vendedor.findUnique({
+      where: {
+        id: vendedorId,
+      },
+    });
+
+    if (!vendedor) {
+      return null;
+    }
+
+    return PrismaVendedorMappper.toDomain(vendedor);
   }
 
   async create(vendedor: Vendedor): Promise<void> {
@@ -20,6 +30,12 @@ export class PrismaVendedoresRepositorio implements VendedoresRepositorios {
   }
 
   async delete(vendedor: Vendedor): Promise<void> {
-    throw new Error('Method not implemented.');
+    const raw = PrismaVendedorMappper.toPrisma(vendedor);
+
+    await this.prisma.vendedor.delete({
+      where: {
+        id: raw.id,
+      },
+    });
   }
 }

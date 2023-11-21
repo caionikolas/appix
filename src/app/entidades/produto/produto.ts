@@ -14,8 +14,8 @@ export class Produto {
   private _id: string;
   private props: ProdutoProps;
 
-  constructor(props: Replace<ProdutoProps, { createdAt?: Date }>) {
-    this._id = randomUUID();
+  constructor(props: Replace<ProdutoProps, { createdAt?: Date }>, id?: string) {
+    this._id = id ?? randomUUID();
     this.props = {
       ...props,
       createdAt: props.createdAt ?? new Date(),

@@ -2,41 +2,60 @@ import { PrismaService } from '../prisma.service';
 import { Injectable } from '@nestjs/common';
 import { ProdutosRepositorios } from '@app/repositorios/produtos-repositorio';
 import { Produto } from '@app/entidades/produto/produto';
+import { PrismaProdutoMapper } from '../mappers/prisma-produto-mapper';
 
 @Injectable()
 export class PrismaProdutosRepositorio implements ProdutosRepositorios {
   constructor(private prisma: PrismaService) {}
   async findById(produtoId: string): Promise<Produto> {
-    throw new Error('Method not implemented.');
+    const produto = await this.prisma.produto.findUnique({
+      where: {
+        id: produtoId,
+      },
+    });
+
+    if (!produto) {
+      return null;
+    }
+
+    return PrismaProdutoMapper.toDomain(produto);
   }
 
   async findManyProdutosId(vendedorId: string): Promise<Produto[]> {
-    throw new Error('Method not implemented.');
+    const produtos = await this.prisma.produto.findMany({
+      where: {
+        vendedorId,
+      },
+    });
+
+    return produtos.map(PrismaProdutoMapper.toDomain);
   }
 
   async countManyProdutos(vendedorId: string): Promise<number> {
-    throw new Error('Method not implemented.');
+    const contador = await this.prisma.produto.count({
+      where: {
+        vendedorId,
+      },
+    });
+
+    return contador;
   }
 
   async create(produto: Produto): Promise<void> {
+    const raw = PrismaProdutoMapper.toPrisma(produto);
+
     await this.prisma.produto.create({
-      data: {
-        id: produto.id,
-        nome: produto.nome,
-        observacao: produto.observacao,
-        preco: produto.preco,
-        updateAt: produto.updateAt,
-        createdAt: produto.createdAt,
-        Vendedor: {
-          connect: {
-            id: produto.vendedorId,
-          },
-        },
-      },
+      data: raw,
     });
   }
 
   async delete(produto: Produto): Promise<void> {
-    throw new Error('Method not implemented.');
+    const raw = PrismaProdutoMapper.toPrisma(produto);
+
+    await this.prisma.produto.delete({
+      where: {
+        id: raw.id,
+      },
+    });
   }
 }
