@@ -1,7 +1,7 @@
 import { Replace } from 'src/helpers/Replace';
 import { randomUUID } from 'crypto';
 
-interface VendaProps {
+export interface VendaProps {
   quantidade: number;
   delivery: boolean;
   retirada: boolean;

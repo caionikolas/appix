@@ -1,40 +1,22 @@
 import { EmMemoriaVendasRepositorio } from '@test/repositorios/em-memoria-venda-repositorio';
-import { AdicionarVenda } from './adicionar-venda';
+import { ContagemVendasProduto } from './contagem-vendas-produto';
+import { makeVenda } from '@test/factories/venda-factory';
 
 describe('Contagem de vendas de um produto especifico', () => {
   test('Deve ser possivel a contagem de vendas de um produto especifico', async () => {
     const vendasRepositorio = new EmMemoriaVendasRepositorio();
-    const adicionarVenda = new AdicionarVenda(vendasRepositorio);
+    const contagemVendasProduto = new ContagemVendasProduto(vendasRepositorio);
 
-    await adicionarVenda.execute({
-      quantidade: 3,
-      delivery: false,
-      retirada: true,
-      localEntrega: 'Rua Toin das coca',
+    await vendasRepositorio.create(makeVenda({ produtoId: 'exemplo-pid-1' }));
+
+    await vendasRepositorio.create(makeVenda({ produtoId: 'exemplo-pid-1' }));
+
+    await vendasRepositorio.create(makeVenda({ produtoId: 'exemplo-pid-2' }));
+
+    const { contador } = await contagemVendasProduto.execute({
       produtoId: 'exemplo-pid-1',
-      compradorId: 'exemplo-cid-1',
     });
 
-    await adicionarVenda.execute({
-      quantidade: 3,
-      delivery: false,
-      retirada: true,
-      localEntrega: 'Rua Toin das coca',
-      produtoId: 'exemplo-pid-1',
-      compradorId: 'exemplo-cid-1',
-    });
-
-    await adicionarVenda.execute({
-      quantidade: 3,
-      delivery: false,
-      retirada: true,
-      localEntrega: 'Rua Toin das coca',
-      produtoId: 'exemplo-pid-2',
-      compradorId: 'exemplo-cid-2',
-    });
-
-    const count = await vendasRepositorio.countManyProdutos('exemplo-pid-1');
-
-    expect(count).toEqual(2);
+    expect(contador).toEqual(2);
   });
 });

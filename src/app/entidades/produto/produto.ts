@@ -1,7 +1,7 @@
 import { randomUUID } from 'crypto';
 import { Replace } from 'src/helpers/Replace';
 
-interface ProdutoProps {
+export interface ProdutoProps {
   nome: string;
   observacao: string;
   preco: number;
