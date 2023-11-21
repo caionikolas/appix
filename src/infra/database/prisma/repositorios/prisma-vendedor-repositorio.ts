@@ -6,7 +6,7 @@ import { PrismaVendedorMappper } from '../mappers/prisma-vendedor-mapper';
 
 @Injectable()
 export class PrismaVendedoresRepositorio implements VendedoresRepositorios {
-  constructor(private prismaService: PrismaService) {}
+  constructor(private prisma: PrismaService) {}
   async findById(vendedorId: string): Promise<Vendedor> {
     throw new Error('Method not implemented.');
   }
@@ -14,7 +14,7 @@ export class PrismaVendedoresRepositorio implements VendedoresRepositorios {
   async create(vendedor: Vendedor): Promise<void> {
     const raw = PrismaVendedorMappper.toPrisma(vendedor);
 
-    await this.prismaService.vendedor.create({
+    await this.prisma.vendedor.create({
       data: raw,
     });
   }

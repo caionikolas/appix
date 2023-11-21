@@ -5,8 +5,12 @@ import { Produto } from '@app/entidades/produto/produto';
 
 @Injectable()
 export class PrismaProdutosRepositorio implements ProdutosRepositorios {
-  constructor(private prismaService: PrismaService) {}
+  constructor(private prisma: PrismaService) {}
   async findById(produtoId: string): Promise<Produto> {
+    throw new Error('Method not implemented.');
+  }
+
+  async findManyProdutosId(vendedorId: string): Promise<Produto[]> {
     throw new Error('Method not implemented.');
   }
 
@@ -15,7 +19,7 @@ export class PrismaProdutosRepositorio implements ProdutosRepositorios {
   }
 
   async create(produto: Produto): Promise<void> {
-    await this.prismaService.produto.create({
+    await this.prisma.produto.create({
       data: {
         id: produto.id,
         nome: produto.nome,

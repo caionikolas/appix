@@ -14,8 +14,12 @@ export class EmMemoriaProdutosRepositorio implements ProdutosRepositorios {
     return produto;
   }
 
-  async create(produto: Produto) {
-    this.produtos.push(produto);
+  async findManyProdutosId(vendedorId: string): Promise<Produto[]> {
+    const produtos = this.produtos.filter(
+      (item) => item.vendedorId === vendedorId,
+    );
+
+    return produtos;
   }
 
   async countManyProdutos(vendedorId: string): Promise<number> {
@@ -24,6 +28,10 @@ export class EmMemoriaProdutosRepositorio implements ProdutosRepositorios {
     ).length;
 
     return count;
+  }
+
+  async create(produto: Produto) {
+    this.produtos.push(produto);
   }
 
   async delete(produto: Produto): Promise<void> {

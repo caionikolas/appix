@@ -5,9 +5,15 @@ import { Venda } from '@app/entidades/venda/venda';
 
 @Injectable()
 export class PrismaVendasRepositorio implements VendasRepositorios {
-  constructor(private prismaService: PrismaService) {}
-
+  constructor(private prisma: PrismaService) {}
   async findById(vendaId: string): Promise<Venda> {
+    throw new Error('Method not implemented.');
+  }
+
+  async findManyComprasId(compradorId: string): Promise<Venda[]> {
+    throw new Error('Method not implemented.');
+  }
+  async findManyVendasId(produtoId: string): Promise<Venda[]> {
     throw new Error('Method not implemented.');
   }
 
@@ -20,7 +26,7 @@ export class PrismaVendasRepositorio implements VendasRepositorios {
   }
 
   async create(venda: Venda): Promise<void> {
-    await this.prismaService.venda.create({
+    await this.prisma.venda.create({
       data: {
         id: venda.id,
         quantidade: venda.quantidade,

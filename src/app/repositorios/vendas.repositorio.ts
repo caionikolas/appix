@@ -6,4 +6,6 @@ export abstract class VendasRepositorios {
   abstract save(venda: Venda): Promise<void>;
   abstract countManyCompradores(compradorId: string): Promise<number>;
   abstract countManyProdutos(produtoId: string): Promise<number>;
+  abstract findManyComprasId(compradorId: string): Promise<Venda[]>;
+  abstract findManyVendasId(produtoId: string): Promise<Venda[]>;
 }

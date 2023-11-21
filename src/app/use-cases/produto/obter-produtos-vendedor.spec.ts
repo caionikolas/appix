@@ -1,11 +1,11 @@
 import { EmMemoriaProdutosRepositorio } from '@test/repositorios/em-memoria-produto-repositorio';
-import { ContagemProdutos } from './contagem-produtos-vendedor';
 import { makeProduto } from '@test/factories/produto-factory';
+import { ObterProdutos } from './obter-produtos-vendedor';
 
-describe('Contagem de produtos de um vendedor especifico', () => {
-  test('Deve ser possivel a contagem de produtos de um vendedor especifico', async () => {
+describe('Obter produtos de um vendedor especifico', () => {
+  test('Deve ser possivel obter produtos de um vendedor especifico', async () => {
     const produtosRepositorio = new EmMemoriaProdutosRepositorio();
-    const contagemProdutos = new ContagemProdutos(produtosRepositorio);
+    const obterProdutos = new ObterProdutos(produtosRepositorio);
 
     await produtosRepositorio.create(
       makeProduto({ vendedorId: 'exemplo-id-1' }),
@@ -19,10 +19,16 @@ describe('Contagem de produtos de um vendedor especifico', () => {
       makeProduto({ vendedorId: 'exemplo-id-2' }),
     );
 
-    const { contador } = await contagemProdutos.execute({
+    const { produtos } = await obterProdutos.execute({
       vendedorId: 'exemplo-id-1',
     });
 
-    expect(contador).toEqual(2);
+    expect(produtos).toHaveLength(2);
+    expect(produtos).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ vendedorId: 'exemplo-id-1' }),
+        expect.objectContaining({ vendedorId: 'exemplo-id-1' }),
+      ]),
+    );
   });
 });

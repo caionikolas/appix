@@ -5,13 +5,13 @@ import { Comprador } from '@app/entidades/comprador/comprador';
 
 @Injectable()
 export class PrismaCompradoresRepositorio implements CompradoresRepositorios {
-  constructor(private prismaService: PrismaService) {}
+  constructor(private prisma: PrismaService) {}
   async findById(compradorId: string): Promise<Comprador> {
     throw new Error('Method not implemented.');
   }
 
   async create(comprador: Comprador): Promise<void> {
-    await this.prismaService.comprador.create({
+    await this.prisma.comprador.create({
       data: {
         id: comprador.id,
         nome: comprador.nome,

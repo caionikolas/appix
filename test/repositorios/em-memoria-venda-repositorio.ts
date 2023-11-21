@@ -14,8 +14,18 @@ export class EmMemoriaVendasRepositorio implements VendasRepositorios {
     return venda;
   }
 
-  async create(venda: Venda) {
-    this.vendas.push(venda);
+  async findManyComprasId(compradorId: string): Promise<Venda[]> {
+    const compras = this.vendas.filter(
+      (item) => item.compradorId == compradorId,
+    );
+
+    return compras;
+  }
+
+  async findManyVendasId(produtoId: string): Promise<Venda[]> {
+    const vendas = this.vendas.filter((item) => item.produtoId == produtoId);
+
+    return vendas;
   }
 
   async countManyCompradores(compradorId: string): Promise<number> {
@@ -32,6 +42,10 @@ export class EmMemoriaVendasRepositorio implements VendasRepositorios {
     ).length;
 
     return count;
+  }
+
+  async create(venda: Venda) {
+    this.vendas.push(venda);
   }
 
   async save(venda: Venda): Promise<void> {

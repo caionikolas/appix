@@ -5,4 +5,5 @@ export abstract class ProdutosRepositorios {
   abstract findById(produtoId: string): Promise<Produto | null>;
   abstract delete(produto: Produto): Promise<void>;
   abstract countManyProdutos(vendedorId: string): Promise<number>;
+  abstract findManyProdutosId(vendedorId: string): Promise<Produto[]>;
 }
