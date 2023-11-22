@@ -16,6 +16,8 @@ export class VendedorController {
     return this.prismaService.vendedor.findMany();
   }
 
+  async delete();
+
   @Post()
   async create(@Body() body: CriarVendedor) {
     const { nome, descricao, delivery, retirada } = body;
